@@ -2,8 +2,9 @@
 layout: post
 title:  "First Post"
 date:   2024-10-29
-categories: website update
+tags: website update
 ---
+
 This is the obligatory "first post" of any new blog. I've been thinking of starting a dev journal for a while but I kept putting it off. Github pages makes it easy enough to set one up, so I figured I'd just spend an afternoon getting it going. Hopefully I'll keep up with updating this journal as I make progress on my personal projects.
 
 I have a few intentions with starting this dev journal:
