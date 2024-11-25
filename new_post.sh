@@ -6,11 +6,14 @@ if [ -z "$1" ]; then
         exit 1
 fi
 
+# convert the post title to lowercase-dashed filename
+FILE_SUFFIX=$(echo "$1" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
 # Get the current date in YYYY-MM-DD format
 DATE=$(date -I)
 
 # Create a filename with the date and post-title
-FILENAME="docs/_posts/${DATE}_$1.md"
+FILENAME="docs/_posts/${DATE}-${FILE_SUFFIX}.md"
 
 # Check if the file already exists
 if [ -e "$FILENAME" ]; then
@@ -18,13 +21,17 @@ if [ -e "$FILENAME" ]; then
         exit 1
 fi
 
+# Create an assets directory
+mkdir -p docs/assets/${DATE}
+
 # Generate the file and add the jekyll header with date and title
 cat << EOF > "$FILENAME"
 ---
 layout: post
-title:  "$1"
-date:   ${DATE}
-categories:
+title: "$1"
+date: ${DATE}
+tags:
+assets: /assets/${DATE}
 ---
 EOF
 
